@@ -37,6 +37,6 @@ public class Usuario {
     @Column(name = "correo")
     private String correo;
 
-    @Column(name = "pass")
-    private String pass;
+    @Column(name = "contraseña")
+    private String contraseña;
 }
