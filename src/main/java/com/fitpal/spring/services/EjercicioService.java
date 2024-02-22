@@ -15,4 +15,8 @@ public class EjercicioService {
     public List<Ejercicio> getAllEx(){
         return repo.findAll();
     }
+
+    public Ejercicio getById(Integer id){
+        return repo.findById(id).get();
+    }
 }

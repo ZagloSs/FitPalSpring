@@ -22,5 +22,9 @@ public class UsuarioService {
         return usuarioRepository.getPassWEmail(email);
     }
 
+    public void postUser(Usuario user){
+        usuarioRepository.save(user);
+    }
+
 
 }

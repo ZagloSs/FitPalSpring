@@ -6,6 +6,7 @@ import com.fitpal.spring.services.EjercicioService;
 import com.fitpal.spring.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +22,10 @@ public class EjercicioController {
     @GetMapping("/all")
     public List<Ejercicio> getAllEx(){
         return service.getAllEx();
+    }
+
+    @GetMapping("/id/{id}")
+    public Ejercicio getById(@PathVariable Integer id){
+        return service.getById(id);
     }
 }

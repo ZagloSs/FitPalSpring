@@ -11,9 +11,9 @@ import lombok.*;
 @Builder
 public class Usuario {
 
-    @Column(name="id")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    @GeneratedValue
     private Integer id;
 
     @Column(name ="nombre")
