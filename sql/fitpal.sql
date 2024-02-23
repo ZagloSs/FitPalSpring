@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-02-2024 a las 17:50:43
+-- Tiempo de generación: 23-02-2024 a las 20:51:28
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -28,24 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `dia` (
-  `id` int(64) NOT NULL,
-  `sets` int(64) NOT NULL,
-  `reps` int(64) NOT NULL,
-  `kg` decimal(65,0) NOT NULL,
-  `ejercicio` varchar(128) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `dia_gym`
---
-
-CREATE TABLE `dia_gym` (
-  `id` int(64) NOT NULL,
-  `fecha_asistencia` date NOT NULL,
-  `peso_del_dia` decimal(60,0) NOT NULL,
-  `idDia` int(64) NOT NULL
+  `id` int(20) NOT NULL,
+  `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -315,18 +299,6 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `nombre`, `altura`, `peso_actual`, `genero`, `rutina_actual`, `apellido`, `correo`, `contraseña`) VALUES
 (24, 'S', 12, 85, 'generoPrueba', 0, 'S', 'a@a.com', '0cc175b9c0f1b6a831c399e269772661');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario_diasasistidos`
---
-
-CREATE TABLE `usuario_diasasistidos` (
-  `idUsuarioDias` int(64) NOT NULL,
-  `idUsuarios` int(64) NOT NULL,
-  `idDias` int(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Índices para tablas volcadas
 --
@@ -336,13 +308,6 @@ CREATE TABLE `usuario_diasasistidos` (
 --
 ALTER TABLE `dia`
   ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `dia_gym`
---
-ALTER TABLE `dia_gym`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_dias_dia` (`idDia`) USING BTREE;
 
 --
 -- Indices de la tabla `ejercicio`
@@ -375,22 +340,14 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `usuario_diasasistidos`
---
-ALTER TABLE `usuario_diasasistidos`
-  ADD PRIMARY KEY (`idUsuarioDias`),
-  ADD KEY `fk_usuario_usuario_diasasistidos` (`idUsuarios`),
-  ADD KEY `fk_dia_gym_usuario_diasasistidos` (`idDias`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `dia_gym`
+-- AUTO_INCREMENT de la tabla `dia`
 --
-ALTER TABLE `dia_gym`
-  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `dia`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio`
@@ -417,20 +374,8 @@ ALTER TABLE `usuario`
   MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT de la tabla `usuario_diasasistidos`
---
-ALTER TABLE `usuario_diasasistidos`
-  MODIFY `idUsuarioDias` int(64) NOT NULL AUTO_INCREMENT;
-
---
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `dia_gym`
---
-ALTER TABLE `dia_gym`
-  ADD CONSTRAINT `dia_gym_ibfk_1` FOREIGN KEY (`idDia`) REFERENCES `dia` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `rutinas_ejercicios`
@@ -438,13 +383,6 @@ ALTER TABLE `dia_gym`
 ALTER TABLE `rutinas_ejercicios`
   ADD CONSTRAINT `rutinas_ejercicios_ibfk_1` FOREIGN KEY (`idejercicios`) REFERENCES `ejercicio` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `rutinas_ejercicios_ibfk_2` FOREIGN KEY (`idrutinass`) REFERENCES `rutina` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `usuario_diasasistidos`
---
-ALTER TABLE `usuario_diasasistidos`
-  ADD CONSTRAINT `usuario_diasasistidos_ibfk_1` FOREIGN KEY (`idUsuarios`) REFERENCES `usuario` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuario_diasasistidos_ibfk_2` FOREIGN KEY (`idDias`) REFERENCES `dia_gym` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
