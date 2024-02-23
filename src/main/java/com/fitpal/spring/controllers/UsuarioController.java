@@ -14,24 +14,29 @@ public class UsuarioController {
     @Autowired
     private UsuarioService service;
 
-    @GetMapping("/all")
+    @GetMapping("/all")//Encuentra todos los usuarios
     public List<Usuario> getAllUsers(){
         return service.getAllUsers();
     }
 
-    @GetMapping("/findbyid/{id}")
+    @GetMapping("/findbyid/{id}")//Encuentra al usuario por id
     public Usuario getProductById(@PathVariable Integer id){
         return service.getUserById(id);
     }
 
-    @GetMapping("/findUserpass/{correo}")
-    public String getPassByEmail(@PathVariable String correo){
+    @GetMapping("/findUserpass/{correo}")//Encuentra la contraseña de un usuario por el correo
+    public Usuario getPassByEmail(@PathVariable String correo){
         return service.getPassWEmail(correo);
     }
 
-    @PostMapping("/postUser")
-    public void addUser(@RequestBody Usuario usuario){
-        service.postUser(usuario);
+    @PostMapping("/postUser")//Registra un usuario nuevo
+    public Usuario addUser(@RequestBody Usuario usuario){
+       return service.postUser(usuario);
+    }
+
+    @PutMapping("/updateUser")
+    public Usuario updateUser(@RequestBody Usuario usuario){
+        return service.updateUser(usuario);
     }
 
 }

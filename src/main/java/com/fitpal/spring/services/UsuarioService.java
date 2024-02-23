@@ -18,12 +18,16 @@ public class UsuarioService {
     public Usuario getUserById(Integer id){
         return usuarioRepository.findById(id).get();
     }
-    public String getPassWEmail(String email){
+    public Usuario getPassWEmail(String email){
         return usuarioRepository.getPassWEmail(email);
     }
 
-    public void postUser(Usuario user){
-        usuarioRepository.save(user);
+    public Usuario postUser(Usuario user){
+       return usuarioRepository.save(user);
+    }
+
+    public Usuario updateUser(Usuario user){
+        return usuarioRepository.save(user);
     }
 
 
