@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-02-2024 a las 20:51:28
+-- Tiempo de generación: 24-02-2024 a las 22:14:30
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -29,8 +29,32 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dia` (
   `id` int(20) NOT NULL,
-  `fecha` date NOT NULL
+  `nombre` varchar(20) NOT NULL,
+  `time` varchar(20) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `month` varchar(20) NOT NULL,
+  `year` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `dia`
+--
+
+INSERT INTO `dia` (`id`, `nombre`, `time`, `date`, `month`, `year`) VALUES
+(2, 'sdfsdf', '00:00 AM', '2024-02-02', 'February', '2024'),
+(4, '', '00:00 AM', '2024-02-05', 'February', '2024'),
+(5, '', '00:00 AM', '2024-02-07', 'February', '2024'),
+(6, 'Maikol', '00:00 AM', '2024-02-01', 'February', '2024'),
+(7, 'Maik', '3:45 PM', '2024-02-03', 'February', '2024'),
+(8, '', '00:00 AM', '2024-02-08', 'February', '2024'),
+(9, '', '00:00 AM', '2024-02-04', 'February', '2024'),
+(10, '', '00:00 AM', '2024-02-06', 'February', '2024'),
+(11, '', '00:00 AM', '2024-02-01', 'February', '2024'),
+(12, '', '00:00 AM', '2024-02-02', 'February', '2024'),
+(13, '', '00:00 AM', '2024-02-03', 'February', '2024'),
+(14, '', '00:00 AM', '2024-02-11', 'February', '2024'),
+(15, '', '00:00 AM', '2024-02-29', 'February', '2024'),
+(16, '', '00:00 AM', '2024-04-01', 'April', '2024');
 
 -- --------------------------------------------------------
 
@@ -297,7 +321,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `altura`, `peso_actual`, `genero`, `rutina_actual`, `apellido`, `correo`, `contraseña`) VALUES
-(24, 'S', 12, 85, 'generoPrueba', 0, 'S', 'a@a.com', '0cc175b9c0f1b6a831c399e269772661');
+(24, 'Admin', 12, 85, 'generoPrueba', 3, 'Admin', 'a@a.com', '0192023a7bbd73250516f069df18b500'),
+(25, 'Pepe', 2, 45, 'Masculino', 0, 'Viyuela', 'pepe@pepe.com', '926e27eecdbc7a18858b3798ba99bddd'),
+(26, 'Maikol', 2, 70, 'Masculino', 0, 'Jackosn', 'maikol@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Índices para tablas volcadas
@@ -347,7 +373,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `dia`
 --
 ALTER TABLE `dia`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicio`
@@ -371,7 +397,7 @@ ALTER TABLE `rutinas_ejercicios`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(64) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Restricciones para tablas volcadas

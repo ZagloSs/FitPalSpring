@@ -20,9 +20,19 @@ public class Dia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "fecha")
-    private Date fecha;
+    @Column(name = "nombre")
+    private String nombre;
 
+    @Column(name = "time")
+    private String time;
 
+    @Column(name = "date")
+    private String date;
+
+    @Column(name = "month")
+    private String month;
+
+    @Column(name = "year")
+    private String year;
 
 }
